@@ -2,4 +2,6 @@ export const TYPES = {
   LOGIN: 'LOGIN',
   LOGOUT: 'LOGOUT',
   MENUS: 'MENUS',
+  BG_ERROR: 'BG_ERROR',
+  BG_SUCCESS: 'BG_SUCCESS',
 };

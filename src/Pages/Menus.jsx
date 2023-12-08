@@ -1,35 +1,17 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TYPES } from '../redux/type';
+import { getMenus } from '../redux/actions/menuAction';
 
 const Menus = () => {
   const dispatch = useDispatch();
   const { list, menuList } = useSelector((state) => state.menuReducer);
 
   useEffect(() => {
-    getMenus();
+    dispatch(getMenus());
   }, []);
 
   console.log('list :', list);
   console.log('menuList :', menuList);
-
-  const getMenus = async () => {
-    try {
-      const res = await axios.get(`https://api.mudoapi.tech/menus`);
-      const listMenu = res.data.data.Data;
-
-      dispatch({
-        type: TYPES.MENUS,
-        payload: {
-          data: listMenu,
-        },
-      });
-      console.log(listMenu);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="container">
